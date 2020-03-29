@@ -19,7 +19,7 @@ do
       if [ "$CURRENT" != "" ]
       then
         PREVIOUS=$CURRENT
-        $IMAGE_VIEWER $COVERS_DIR/$CURRENT &
+        $IMAGE_VIEWER "$COVERS_DIR/$CURRENT" &
       else
         echo "::: NO COVER ART :::" 
         PREVIOUS=""
