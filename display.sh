@@ -7,13 +7,15 @@ PREVIOUS=""
 CURRENT=""
 
 IMAGE_VIEWER="$CURRENT_DIR/imgcat"
+# use python-imgcat
+#IMAGE_VIEWER="imgcat --width `stty size| awk '{print $2}'` --height `bc -l <<< \"$(stty size| awk '{print $1}') - 1\"`"
 
 clear
 while (true)
 do
     CURRENT=$(ls ${COVERS_DIR})
     if [ "$CURRENT" != "$PREVIOUS" ]
-    then 
+    then
       pkill -TERM -P $$
       clear
       if [ "$CURRENT" != "" ]
@@ -21,10 +23,10 @@ do
         PREVIOUS=$CURRENT
         $IMAGE_VIEWER "$COVERS_DIR/$CURRENT" &
       else
-        echo "::: NO COVER ART :::" 
+        echo "::: NO COVER ART :::"
         PREVIOUS=""
       fi
-    fi   
+    fi
     sleep 1
 done
 
